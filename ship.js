@@ -9,6 +9,11 @@ class Ship {
         this.numberOfHits++
         return this.numberOfHits
     }
+
+    isSunk() {
+        if (this.numberOfHits === this.shipLength) return this.shipIsSunk = true
+        else return false
+    }
 }
 
 
