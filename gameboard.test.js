@@ -5,7 +5,7 @@ const carrier = new Ship(5)
 const cruiser = new Ship(3)
 const destroyer = new Ship(2)
 
-const player1 = new Gameboard ("hey")
+const player1 = new Gameboard
 
 describe("Gameboard.placeShip", () => {
 

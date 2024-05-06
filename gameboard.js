@@ -1,6 +1,5 @@
 class Gameboard {
-    constructor (player) {
-        this.player = player
+    constructor () {
         this.board = []
         this.missedShots = []
         this.gameIsOver = false
