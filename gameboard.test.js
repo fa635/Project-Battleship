@@ -33,7 +33,15 @@ describe("Gameboard.receiveAttack", () => {
     test("hit ship but the ship doesn't sink", () => {
         expect(player1.receiveAttack(9)).toEqual({"numberOfHits": 2, "shipIsSunk": false, "shipLength": 3})
     })
-
+    test("hit ship but the ship doesn't sink", () => {
+        expect(player1.receiveAttack(2)).toEqual({"numberOfHits": 2, "shipIsSunk": false, "shipLength": 5})
+    })
+    test("hit ship but the ship doesn't sink", () => {
+        expect(player1.receiveAttack(3)).toEqual({"numberOfHits": 3, "shipIsSunk": false, "shipLength": 5})
+    })
+    test("hit ship but the ship doesn't sink", () => {
+        expect(player1.receiveAttack(4)).toEqual({"numberOfHits": 4, "shipIsSunk": false, "shipLength": 5})
+    })
 
 
     test("doesn't hit any ship 6", () => {
@@ -52,5 +60,19 @@ describe("Gameboard.receiveAttack", () => {
     })
     test("hit ship and the ship is sunk", () => {
         expect(player1.receiveAttack(10)).toEqual({"numberOfHits": 3, "shipIsSunk": true, "shipLength": 3})
+    })
+})
+
+describe("Gameboard.gameOver", () => {
+    test("works when all ships are not sunk", () => {
+        expect(player1.gameOver()).toBe(false)
+    })
+
+
+    test("hit ship and the ship is sunk", () => {
+        expect(player1.receiveAttack(5)).toEqual({"numberOfHits": 5, "shipIsSunk": true, "shipLength": 5})
+    })
+    test("works when all ships are sunk", () => {
+        expect(player1.gameOver()).toBe(true)
     })
 })

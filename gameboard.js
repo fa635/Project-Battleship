@@ -3,6 +3,7 @@ class Gameboard {
         this.player = player
         this.board = []
         this.missedShots = []
+        this.gameIsOver = false
     }
 
     placeShip (ship, ...coordinates) {
@@ -16,7 +17,7 @@ class Gameboard {
 
         let attackHitsShip = false
 
-        for (let i = 0;  i < this.board.length; i++ ) {
+        for (let i = 0; i < this.board.length; i++) {
             if (this.board[i].shipPlacement.includes(coordinate)) {
                 this.board[i].shipType.hit()
 
@@ -36,6 +37,16 @@ class Gameboard {
 
             return this.missedShots
         } 
+    }
+
+    gameOver () {
+
+        for (let i = 0; i < this.board.length; i++) {
+            if(this.board[i].shipType.shipIsSunk === false) {
+                return this.gameIsOver
+            }
+            else return this.gameIsOver = true
+        }
     }
 }
 
