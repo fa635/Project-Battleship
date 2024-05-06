@@ -1,5 +1,5 @@
-const Gameboard = require("./gameboard")
-const Ship = require("./ship/ship.js")
+const Gameboard = require("../gameboard/gameboard.js")
+const Ship = require("../ship/ship.js")
 
 const carrier = new Ship(5)
 const cruiser = new Ship(3)
