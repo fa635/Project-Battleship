@@ -14,16 +14,11 @@ const random = (function () {
 
     const chooseVerticalOrHorizontalAxe = () => Math.floor(Math.random() * 11)
 
-    // if (a % 2 === 0) return verticalOrHorizontal = "vertical"
-    // else return verticalOrHorizontal = "horizontal"
     return { randomNumber, chooseVerticalOrHorizontalAxe }
 })()
 
 
 function computerPlaceShip (shipLength) {
-
-    // getOtherNumbers(random.randomNumber, ship.shipLength)
-
 
     let verticalOrHorizontal = random.chooseVerticalOrHorizontalAxe()
 
@@ -35,6 +30,8 @@ function computerPlaceShip (shipLength) {
     // tchip, it just need to attack in random mode
 
     // and place ships in random mode at the start
+
+    // avoid that ships can be placed of board
 }
 
 function placeVertical (shi) {
@@ -45,6 +42,9 @@ function placeVertical (shi) {
     else return placeVerticalDown(random.randomNumber(), shi)
 }
 
+
+
+
 function placeHorizontal (shi) {
 
     let b = Math.floor(Math.random() * 11)
@@ -54,74 +54,69 @@ function placeHorizontal (shi) {
 }
 
 
-// function getOtherNumbers (number, length) {
+function placeHorizontalRight (number, length) {
+    let shipCoordinates = [number]
 
-//     let shipCoordinates = number
+    for (let i = 0; i < length - 1; i++) {
 
-//     return placeVerticalDown(shipCoordinates, number, length)
+        shipCoordinates.push(number + (i + 1))
 
-    
+    }
+
+    return shipCoordinates
+}
+
+
+function placeHorizontalLeft (number, length) {
+    let shipCoordinates = [number]
+
+    for (let i = 0; i < length - 1; i++) {
+
+        shipCoordinates.push(number - (i + 1))
+
+    }
+
+    return shipCoordinates
+}
+
+
+
+
+function placeVerticalUp (number, length) {
+    let shipCoordinates = [number]
+
+    for (let i = 0; i < length - 1; i++) {
+
+        shipCoordinates.push(number - ((i + 1) * 10))
+
+    }
+
+    return shipCoordinates
+}
+
+
+function placeVerticalDown (number, length) {
+    let shipCoordinates = [number]
+
+    for (let i = 0; i < length - 1; i++) {
+
+        shipCoordinates.push(number + ((i + 1) * 10))
+
+    }
+
+    return shipCoordinates
+}
+
+
+// function makeShipStayOnGameBoard () {
+
+//     if (shipCoordinates)
+
 // }
 
 
-function placeHorizontalRight (number, length) {
-    let shipCoordinates = number
+// commit for everybody change variable to array for placement input
 
-    for (let i = 0; i < length - 1; i++) {
-
-        shipCoordinates += ", " + (number + (i + 1))
-
-    }
-
-    return shipCoordinates
-}
-
-function placeHorizontalLeft (number, length) {
-    let shipCoordinates = number
-
-    for (let i = 0; i < length - 1; i++) {
-
-        shipCoordinates += ", " + (number - (i + 1))
-
-    }
-
-    return shipCoordinates
-}
-
-function placeVerticalUp (number, length) {
-    let shipCoordinates = number
-
-    for (let i = 0; i < length - 1; i++) {
-
-        shipCoordinates += ", " + (number - ((i + 1) * 10))
-
-    }
-
-    return shipCoordinates
-}
-
-function placeVerticalDown (number, length) {
-    let shipCoordinates = number
-
-    for (let i = 0; i < length - 1; i++) {
-
-        shipCoordinates += ", " + (number + ((i + 1) * 10))
-
-    }
-
-    return shipCoordinates
-}
-
-// the only thing that the computer needs to know hoy to do is place ships with sense 
-
-
-// like why am i even doing that. am just tempted to create two distinct factories that do one or another thing
-
-
-
-// module.exports = Player
-
-// console.log(computerPlaceShip(3))
 
 module.exports = computerPlaceShip
 

@@ -5,7 +5,7 @@ class Gameboard {
         this.gameIsOver = false
     }
 
-    placeShip (ship, ...coordinates) {
+    placeShip (ship, coordinates) {
         this.board.push({shipType : ship, shipPlacement : coordinates})
 
         return this.board[this.board.length - 1]
