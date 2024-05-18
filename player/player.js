@@ -59,7 +59,11 @@ function placeHorizontalRight (number, length) {
 
     for (let i = 0; i < length - 1; i++) {
 
-        shipCoordinates.push(number + (i + 1))
+        let toPush = number + (i + 1)
+
+        if (toPush > 100 || toPush < 0) return computerPlaceShip(length)
+
+        shipCoordinates.push(toPush)
 
     }
 
@@ -72,7 +76,11 @@ function placeHorizontalLeft (number, length) {
 
     for (let i = 0; i < length - 1; i++) {
 
-        shipCoordinates.push(number - (i + 1))
+        let toPush = number - (i + 1)
+
+        if (toPush > 100 || toPush < 0) return computerPlaceShip(length)
+
+        shipCoordinates.push(toPush)
 
     }
 
@@ -87,7 +95,12 @@ function placeVerticalUp (number, length) {
 
     for (let i = 0; i < length - 1; i++) {
 
-        shipCoordinates.push(number - ((i + 1) * 10))
+        let toPush = number - (i + 1) * 10
+
+        if (toPush > 100 || toPush < 0) return computerPlaceShip(length)
+
+        shipCoordinates.push(toPush)
+
 
     }
 
@@ -100,7 +113,11 @@ function placeVerticalDown (number, length) {
 
     for (let i = 0; i < length - 1; i++) {
 
-        shipCoordinates.push(number + ((i + 1) * 10))
+        let toPush = number + (i + 1) * 10
+
+        if (toPush > 100 || toPush < 0) return computerPlaceShip(length)
+
+        shipCoordinates.push(toPush)
 
     }
 
@@ -108,15 +125,38 @@ function placeVerticalDown (number, length) {
 }
 
 
-// function makeShipStayOnGameBoard () {
+function makeShipStayOnGameBoard (coordinates, l) {
+    
 
-//     if (shipCoordinates)
+    // a = coordinates.length
 
-// }
+    // return a
+
+    // bitch ?!
+
+    // maybe i should just check in the loop before the array gets printed
+
+    // also function to populate computer gameboard
+
+
+
+
+    // for (let i = 0; i < coordinates.length; i++) {
+
+    //     if (coordinates[i] > 100 || coordinates[i] < 0) {
+
+    //         return computerPlaceShip(l)
+
+    //     }
+    // }
+
+    
+
+}
 
 
 // commit for everybody change variable to array for placement input
 
 
-module.exports = computerPlaceShip
+module.exports = placeVerticalDown
 
