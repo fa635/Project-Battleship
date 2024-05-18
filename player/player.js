@@ -1,12 +1,52 @@
 const Gameboard = require("../gameboard/gameboard")
+const Ship = require("../ship/ship")
 
 
 const players = (function () {
 
     const human = new Gameboard
 
+    const humanCarrier = new Ship (5)
+    const humanBattleship = new Ship (4)
+    const humanCruiser = new Ship (3)
+    const humanSubmarine = new Ship (3)
+    const humanDestroyer = new Ship (2)
+
+
     const computer = new Gameboard
-})
+
+    const computerCarrier = new Ship (5)
+    const computerBattleship = new Ship (4)
+    const computerCruiser = new Ship (3)
+    const computerSubmarine = new Ship (3)
+    const computerDestroyer = new Ship (2)
+
+
+    function populateComputerBoard () {
+
+        computer.placeShip(computerCarrier, computerPlaceShip(computerCarrier.shipLength))
+
+        computer.placeShip(computerBattleship, computerPlaceShip(computerBattleship.shipLength))
+
+        computer.placeShip(computerCruiser, computerPlaceShip(computerCruiser.shipLength))
+
+        computer.placeShip(computerSubmarine, computerPlaceShip(computerSubmarine.shipLength))
+
+        computer.placeShip(computerDestroyer, computerPlaceShip(computerDestroyer.shipLength))
+
+        return computer
+    
+    }
+
+    return { populateComputerBoard, computer }
+
+})()
+
+
+
+
+
+
 
 const random = (function () {
 
@@ -25,13 +65,21 @@ function computerPlaceShip (shipLength) {
     if (verticalOrHorizontal % 2 === 0) return placeVertical(shipLength)
     else return placeHorizontal(shipLength)
 
-    // at the end i need a variable of numbers 
+    // at the end i need a variable of numbers
 
     // tchip, it just need to attack in random mode
+
+
+
+
 
     // and place ships in random mode at the start
 
     // avoid that ships can be placed of board
+
+    // avoid that ships place on each other ------- see 
+
+    // also function to populate computer gameboard
 }
 
 function placeVertical (shi) {
@@ -101,7 +149,6 @@ function placeVerticalUp (number, length) {
 
         shipCoordinates.push(toPush)
 
-
     }
 
     return shipCoordinates
@@ -158,5 +205,5 @@ function makeShipStayOnGameBoard (coordinates, l) {
 // commit for everybody change variable to array for placement input
 
 
-module.exports = placeVerticalDown
+module.exports = players
 
