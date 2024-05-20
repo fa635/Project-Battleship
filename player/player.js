@@ -111,6 +111,9 @@ function placeHorizontalRight (number, length) {
 
         if (toPush > 100 || toPush < 0) return computerPlaceShip(length)
 
+        let postOccupied = avoidShipsPlaceOnEachOther(length, toPush)
+        if (postOccupied === true) return computerPlaceShip(length)
+
         shipCoordinates.push(toPush)
 
     }
@@ -127,6 +130,9 @@ function placeHorizontalLeft (number, length) {
         let toPush = number - (i + 1)
 
         if (toPush > 100 || toPush < 0) return computerPlaceShip(length)
+
+        let postOccupied = avoidShipsPlaceOnEachOther(length, toPush)
+        if (postOccupied === true) return computerPlaceShip(length)
 
         shipCoordinates.push(toPush)
 
@@ -147,6 +153,9 @@ function placeVerticalUp (number, length) {
 
         if (toPush > 100 || toPush < 0) return computerPlaceShip(length)
 
+        let postOccupied = avoidShipsPlaceOnEachOther(length, toPush)
+        if (postOccupied === true) return computerPlaceShip(length)
+
         shipCoordinates.push(toPush)
 
     }
@@ -164,12 +173,29 @@ function placeVerticalDown (number, length) {
 
         if (toPush > 100 || toPush < 0) return computerPlaceShip(length)
 
+        let postOccupied = avoidShipsPlaceOnEachOther(length, toPush)
+        if (postOccupied === true) return computerPlaceShip(length)
+
         shipCoordinates.push(toPush)
 
     }
 
     return shipCoordinates
 }
+
+
+function avoidShipsPlaceOnEachOther (placingToPush) {
+
+    for (let i = 0; i < players.computer.board.length; i++) {
+        
+        if (players.computer.board[i].shipPlacement.includes(placingToPush)) {
+
+            return true
+        }
+        else return false
+    }
+}
+
 
 
 function makeShipStayOnGameBoard (coordinates, l) {
