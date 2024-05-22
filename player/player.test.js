@@ -1,15 +1,8 @@
-// const Player = require("../player/player.js")
-
 const players = require("../player/player.js")
 
-describe("shipCoordinates", () => {
-    test("works", () => {
+describe("players.populateComputerBoard", () => {
+    test("place ships randomly on computer game board", () => {
         expect(players.populateComputerBoard()).toBe(players.computer)
     })
 })
 
-// describe("Player", () => {
-//     test("creates player with board", () => {
-//         expect(human).toBe("hello")
-//     })
-// })

@@ -38,7 +38,15 @@ const players = (function () {
     
     }
 
-    return { populateComputerBoard, computer }
+    function computerAttacks () {
+
+        let attackedHumanCell = random.randomNumber()
+
+        return human.receiveAttack(attackedHumanCell)
+
+    }
+
+    return { populateComputerBoard, computer, computerAttacks }
 
 })()
 
@@ -64,22 +72,6 @@ function computerPlaceShip (shipLength) {
 
     if (verticalOrHorizontal % 2 === 0) return placeVertical(shipLength)
     else return placeHorizontal(shipLength)
-
-    // at the end i need a variable of numbers
-
-    // tchip, it just need to attack in random mode
-
-
-
-
-
-    // and place ships in random mode at the start
-
-    // avoid that ships can be placed of board
-
-    // avoid that ships place on each other ------- see 
-
-    // also function to populate computer gameboard
 }
 
 function placeVertical (shi) {
@@ -195,40 +187,6 @@ function avoidShipsPlaceOnEachOther (placingToPush) {
         else return false
     }
 }
-
-
-
-function makeShipStayOnGameBoard (coordinates, l) {
-    
-
-    // a = coordinates.length
-
-    // return a
-
-    // bitch ?!
-
-    // maybe i should just check in the loop before the array gets printed
-
-    // also function to populate computer gameboard
-
-
-
-
-    // for (let i = 0; i < coordinates.length; i++) {
-
-    //     if (coordinates[i] > 100 || coordinates[i] < 0) {
-
-    //         return computerPlaceShip(l)
-
-    //     }
-    // }
-
-    
-
-}
-
-
-// commit for everybody change variable to array for placement input
 
 
 module.exports = players
